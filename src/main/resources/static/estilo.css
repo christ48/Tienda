@@ -60,6 +60,13 @@ header{
     background-size: cover;
     
 }
+
+p {
+    margin-bottom: 40px;
+    font-size: 18px;
+    color: white;
+}
+
 .navbar{
     display: flex;
     margin-right: 10px;
@@ -77,3 +84,58 @@ header{
 .navbar a:hover {
     background: #012E40;
 }
+.content {
+    height: 50vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.sau{
+    padding: 50px;
+    background: #011526;
+
+}
+.box-contenedor{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    text-align: center;
+
+}
+
+.box-contenedor .box{
+    height: 20rem;
+    width: 17rem;
+    background: #012E40;
+    text-align: center;
+    border-radius: 1rem;
+    box-shadow: 0 .3rem 5rem rgba(39, 38, 38, 0.5);
+    margin: 1rem;
+}
+
+.box-contenedor .box img{
+    height: 15rem;
+    width: 15rem;
+    line-height: 3rem;
+    text-align: center;
+    border-radius: 50%;
+    color: white;
+    background: none;
+    font-size: 2rem;
+    
+ }
+  .box-contenedor .box h3{
+    font-size: 20px;
+    color: white;
+    text-align: center;
+    padding: 10px;
+ }
+
+ .box-contenedor .box p{
+    font-size: 16px;
+    padding:5px;
+    text-align: center;
+ }
