@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this template
+-->
+<html>
+    <head>
+        <title>Betta capital</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="estilo.css" rel="stylesheet">
+        <head th:replace="~{layout/Header :: head}">
+    </head>
+    <body>
+     <header th:replace="~{layout/Header :: header}"/>
+ 
+        <section class="content sau"> 
+            <p>
+                Nuestro objetivo como tienda es proporcionar información precisa y especializada, así como suministrar el equipo necesario
+                para garantizar una óptima calidad de vida
+                para los fascinantes peces conocidos como Betta
+            </p>
+        
+            <div class="box-contenedor">
+                <div class="box">
+                    <h3>Bettas</h3>
+                    <img <img src="/imagenes/Crow.jpg" alt="Un majestuoso pez Betta de cola corona de color 
+                         azul brillante nadando en un 
+                         acuario"/>
+                    
+                </div> 
+                <div class="box">
+                    <h3>Equipo</h3>
+                    <img src="/imagenes/Esponja.jpg" alt="Un filtro de esponja doble de color negro, 
+                          con una estructura porosa y suave al tacto"/>
+                </div>
+                <div class="box">
+                    <h3>Alimentacion</h3>
+                    <img src="/imagenes/alimento.jpg" alt="alimento new life spectrum para betta"/>
+                    
+                </div>
+                
+            </div>
+        </section>
+
+     <footer th:replace="~{layout/Header :: footer}"/>     
+    </body>
+    <style>
+
+body{
+    text-align: center;
+    font-family: 'Nuosu SIL', serif;
+    font-family: 'Oswald', sans-serif;
+    font-family: 'Roboto Condensed', sans-serif;
+      background-image: url("/imagenes/bettaFond.jpg");
+  background-size: cover;
+  background-position: center;
+}
+
+.head{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 70px;
+    background-color: #011526;
+    position: fixed;
+    width: 100%;
+    z-index: 100;
+}
+
+
+
+p {
+    margin-bottom: 40px;
+    font-size: 18px;
+    color: white;
+}
+
+.navbar{
+    display: flex;
+    margin-right: 10px;
+
+}
+.navbar a {
+    display: block;
+    padding: 23px 20px;
+    color: white;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: 20px;
+}
+
+.navbar a:hover {
+    background: #012E40;
+}
+.content {
+    height: 600px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.sau{
+    padding: 50px;
+    background: #011526;
+
+}
+.box-contenedor{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    text-align: center;
+
+}
+
+.box-contenedor .box{
+    height: 20rem;
+    width: 17rem;
+    background: #012E40;
+    text-align: center;
+    border-radius: 1rem;
+    box-shadow: 0 .3rem 5rem rgba(39, 38, 38, 0.5);
+    margin: 1rem;
+}
+
+.box-contenedor .box img{
+    height: 15rem;
+    width: 15rem;
+    line-height: 3rem;
+    text-align: center;
+    border-radius: 50%;
+    color: white;
+    background: none;
+    font-size: 2rem;
+    
+ }
+  .box-contenedor .box h3{
+    font-size: 20px;
+    color: white;
+    text-align: center;
+    padding: 10px;
+ }
+
+ .box-contenedor .box p{
+    font-size: 16px;
+    padding:5px;
+    text-align: center;
+    
+ }
+ /* Establecer el encabezado como una posición fija */
+ header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+ }
+
+
+
+
+
+    </style>
+</html>
