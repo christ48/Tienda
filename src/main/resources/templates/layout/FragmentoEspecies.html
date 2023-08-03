@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this template
+-->
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+<head th:replace="~{/layout/plantilla :: head}">
+    <title>BettaStore</title>
+</head>
+    <body>
+        <!-- Fragmento para mostrar la lista de especies -->
+<section th:fragment="listadoEspecies" id="especies">
+    <div class="container">
+        <!-- ... Otras partes del código ... -->
+
+        <div th:if="${Especie != null and not #lists.isEmpty(Especie)}">
+            <table class="table table-striped table-hover">
+               <thead class="table-dark">
+                                <tr>
+                                    <th>#</th>
+                                    <th>Nombre</th>
+                                    <th>Descripción</th>
+                                    <th>Habitat</th>
+                                    <th>Tamaño</th>
+                                    <th>Familia</th>
+                                    <th>Acciones</th> <!-- Nueva columna para acciones -->
+                                </tr>
+                            </thead>
+
+                <tbody>
+                    <tr th:each="especie, contador : ${Especie}">
+                        <td th:text="${contador.count}"></td>
+                        <td th:text="${especie.Nombre}"></td>
+                        <td>
+                            <div style="max-width: 300px; overflow-wrap: break-word;"> <!-- Ajustar el ancho máximo y permitir ajuste de línea -->
+                                <span th:text="${especie.Descripcion}"></span>
+                            </div>
+                        </td>
+                        <td th:text="${especie.Habitat}"></td>
+                        <td th:text="${especie.Tamano}"></td>
+                        <td th:text="${especie.Familia}"></td>
+                          <td>
+                                        <a th:href="@{/eliminarEspecie/{idEspecie}(idEspecie=${especie.idEspecie})}" class="btn btn-danger">
+                                            <i class="fas fa-trash"></i> [[#{accion.eliminar}]]
+                                        </a>
+
+                                        <a th:href="@{/modificaEspecie/{idEspecie}(idEspecie=${especie.idEspecie})}" class="btn btn-success">
+                                            <i class="fas fa-pencil"></i> [[#{accion.actualizar}]]
+                                        </a>
+
+                                    </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</section>
+<section th:fragment="Agregar" class="py-4 mb-4 bg-light">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">   
+                <button 
+                    type="button" 
+                    class="btn btn-primary btn-block mb-3" 
+                    data-bs-toggle="modal" 
+                    data-bs-target="#AgregarEspecie">
+                    <i class="fas fa-plus"></i> agregar especie
+                </button>
+            </div>
+          
+        </div>
+    </div>
+</section>        
+        
+        
+    <section th:fragment="AgregarEspecie">
+     <div id="AgregarEspecie" class="modal fade" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-md">
+            <div class="modal-content">
+                <div class="modal-header bg-info text-white">
+                    <h5 class="modal-title">Agregar Producto</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <form th:action="@{/nuevaEspecie}" th:object="${especie}" method="POST" class="was-validated" enctype="multipart/form-data">
+                    <div class="modal-body">
+                        <div class="mb-3">
+                            <label for="Nombre">Nombre</label>
+                            <input type="text" class="form-control" name="nombre" required="true"/>
+                        </div>
+                        <div class="mb-3">
+                            <label for="Descripcion">Descripción</label>
+                            <input type="text" class="form-control" name="descripcion" required="true"/>
+                        </div>
+                          <div class="mb-3">
+                            <label for="Habitat">Habitat</label>
+                            <input type="text" class="form-control" name="habitat" required="true"/>
+                        </div>
+                        <div class="mb-3">
+                            <label for="Tamano">Tamaño</label>
+                            <input type="text" class="form-control" name="tamano" required="true"/>
+                        </div>
+                        <div class="mb-3">
+                            <label for="Familia">Familia</label>
+                            <input type="text" class="form-control" name="familia" required="true" />
+                            
+                        </div>
+                       
+
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn btn-primary" type="submit">Guardar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+<section th:fragment="editarEspecie">
+    <div class="row">
+        <div class="col-md-2"></div>
+        <div class="col-md-8">
+            <form method="POST" th:action="@{/guardarEspecie}" th:object="${Especie}" class="was-validated" enctype="multipart/form-data">
+
+                <input type="hidden" name="idEspecie" th:field="*{idEspecie}" />
+                <div id="details">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col">
+                                <div class="card">
+                                    <div class="card-header">
+                                        <h4>[[#{accion.actualizar}]]</h4>
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="mb-3">
+                                            <label for="nombre">Nombre</label>
+                                            <input type="text" class="form-control" name="nombre" th:field="*{Nombre}" required="true" />
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="descripcion">Descripción</label>
+                                            <input type="text" class="form-control" name="descripcion" th:field="*{Descripcion}" required="true" />
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="habitat">Habitat</label>
+                                            <input type="text" class="form-control" name="habitat" th:field="*{Habitat}" required="true" />
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="tamano">Tamaño</label>
+                                            <input type="text" class="form-control" name="tamano" th:field="*{Tamano}" required="true" />
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="familia">Familia</label>
+                                            <input type="text" class="form-control" name="familia" th:field="*{Familia}" required="true" />
+                                        </div>
+                                        <div class="col-md-4 d-grid">
+                                            <button type="submit" class="btn btn-success">
+                                                <i class="fas fa-check"></i> guardar
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</section>
+
+
+
+    </body>
+</html>

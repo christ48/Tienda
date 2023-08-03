@@ -9,7 +9,9 @@ package com.example.demo.service;
  * @author lossa
  */
 
+import com.example.demo.domain.Especies;
 import com.example.demo.domain.Producto;
+import java.math.BigDecimal;
 import java.util.List;
 
 public interface Productoservice {
@@ -23,4 +25,11 @@ public interface Productoservice {
     void deleteProducto(Long idProducto);
 
     void updateProducto(Producto producto);
+    
+    List<Producto>  findByPrecioBetweenOrderByDescripcion(BigDecimal precioInf, BigDecimal precioSup);
+    
+    public List<Producto> metodoJPQL(BigDecimal precioInf, BigDecimal precioSup);
+   
+    public List<Producto> metodoNativo(BigDecimal precioInf, BigDecimal precioSup);
+   
 }

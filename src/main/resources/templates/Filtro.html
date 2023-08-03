@@ -13,27 +13,24 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
     </head>
     <body>
         <header th:replace="~{layout/Header :: header}"/>
-  
-         
-<section th:replace="~{layout/FragmentoProducto :: botonesAgregar}"/>
-<section th:replace="~{layout/FragmentoProducto :: agregarProducto}"/>
-
-<section th:replace="~{layout/FragmentoProducto :: listadoProductos}"></section>
-
-
-
-
-   <footer th:replace="~{layout/Header :: footer}"/>       
+        <section th:replace="~{layout/FragmentoListado :: listadoProductos}"></section>
+        <section th:replace="~{layout/FragmentoListado :: filtros}"></section>
     </body>
-<style>           
-   body{
-    text-align: center;
-    font-family: 'Nuosu SIL', serif;
-    font-family: 'Oswald', sans-serif;
-    font-family: 'Roboto Condensed', sans-serif;
-      background-image: url("/imagenes/bettaFond.jpg");
-  background-size: cover;
-  background-position: center;
+                        <style>           
+        *{
+  margin: 0;
+ 
+  border: 0;
+  font-size: 20px ;
+  vertical-align: baseline;
+
+}
+
+body {
+  background-color:  #87CEFA;
+  text-align: center;
+  font-family: 'Nuosu SIL', 'Oswald', 'Roboto Condensed', sans-serif;
+ 
 }
 
 .head{
