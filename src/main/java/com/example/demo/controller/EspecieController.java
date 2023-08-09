@@ -28,8 +28,8 @@ public class EspecieController {
      @GetMapping("Especies")
     public String MostrarEspecies(Model model) {
     List<Especies> especies = especiService.getEspecies();
-    model.addAttribute("Especie", especies); // Usa "Especie" en singular
-    model.addAttribute("TotalEspecies", especies.size()); // Agrega otra atributo si deseas mostrar el total
+    model.addAttribute("Especie", especies); 
+    model.addAttribute("TotalEspecies", especies.size());
     return "Especies";
 }
 
@@ -52,7 +52,7 @@ public class EspecieController {
          
      
      }
-      @PostMapping("/guardarEspecie")
+    @PostMapping("/guardarEspecie")
     public String ProductoActulizar(Especies especie){
         especiService.SaveEspecie(especie);
         return"redirect:/Especies";

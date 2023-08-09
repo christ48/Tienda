@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this template
+-->
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+    <head th:replace="~{/layout/plantilla :: head}">
+
+    </head>
+    <body>
+    
+    <section th:fragment="botonesAgregar" class="py-4 mb-4 bg-light">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">   
+                <button 
+                    type="button" 
+                    class="btn btn-primary btn-block mb-3" 
+                    data-bs-toggle="modal" 
+                    data-bs-target="#agregarProveedor">
+                    <i class="fas fa-plus"></i> Agregar Producto
+                </button>
+            </div>
+          
+        </div>
+    </div>
+</section>     
+  <section th:fragment="listadoProveedores" id="proveedores">
+    <style>
+        .listado-proveedores {
+            background-color: white;
+        }
+    </style>
+
+    <div class="container">
+        <div th:if="${Proveedores != null and not #lists.isEmpty(Proveedores)}" class="listado-proveedores">
+            <table class="table table-striped table-hover">
+                <thead class="table-dark">
+                    <tr>
+                        <th>#</th>
+                        <th>Nombre</th>
+                        <th>Dirección</th>
+                        <th>Teléfono</th>
+                        <th>Email</th>
+                        <th>Acciones</th> 
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr th:each="proveedor, contador : ${Proveedores}">
+                        <td th:text="${contador.count}"></td>
+                        <td th:text="${proveedor.Nombre}"></td>
+                        <td th:text="${proveedor.Direccion}"></td>
+                        <td th:text="${proveedor.Telefono}"></td>
+                        <td th:text="${proveedor.Email}"></td>
+
+                        <td>
+                            <a th:href="@{/eliminarProveedor/{id}(id=${proveedor.id})}" class="btn btn-danger">
+                                <i class="fas fa-trash"></i> [[#{accion.eliminar}]]
+                            </a>
+
+                            <a th:href="@{/ModificarProveedor/{id}(id=${proveedor.id})}" class="btn btn-success">
+                                <i class="fas fa-pencil"></i> [[#{accion.actualizar}]]
+                            </a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</section>
+        <section th:fragment="agregarProveedor">
+    <div id="agregarProveedor" class="modal fade" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-md">
+            <div class="modal-content">
+                <div class="modal-header bg-info text-white">
+                    <h5 class="modal-title">Agregar Proveedor</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <form th:action="@{/nuevoProveedor}" th:object="${proveedores}" method="POST" class="was-validated">
+                    <div class="modal-body">
+                        <div class="mb-3">
+                            <label for="Nombre">Nombre</label>
+                            <input type="text" class="form-control" name="nombre"  required="true"/>
+                        </div>
+                        <div class="mb-3">
+                            <label for="Direccion">Dirección</label>
+                            <input type="text" class="form-control" name="dirrecion" required="true"/>
+                        </div>
+                        <div class="mb-3">
+                            <label for="Telefono">Teléfono</label>
+                            <input type="text" class="form-control" name="Telefono" required="true"/>
+                        </div>
+                        <div class="mb-3">
+                            <label for="Email">Email</label>
+                            <input type="text" class="form-control"name="email" required="true"/>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn btn-primary" type="submit">Guardar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+       <section th:fragment="editarProveedor">
+    <div class="row">
+        <div class="col-md-2"></div>
+        <div class="col-md-8">
+            <form th:action="@{/ActulizarProveedor}" th:object="${Proveedores}" method="POST" class="was-validated">
+                <input type="hidden" name="id" th:field="*{id}" />
+
+                <div id="details">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col">
+                                <div class="card">
+                                    <div class="card-header">
+                                        <h4>[[#{accion.actualizar}]]</h4>
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="mb-3">
+                                            <label for="nombre">Nombre</label>
+                                            <input type="text" class="form-control" name="nombre" th:field="*{Nombre}" required="true" />
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="direccion">Dirección</label>
+                                            <input type="text" class="form-control" name="direccion" th:field="*{Direccion}" required="true" />
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="telefono">Teléfono</label>
+                                            <input type="text" class="form-control" name="telefono" th:field="*{Telefono}" required="true" />
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="email">Email</label>
+                                            <input type="email" class="form-control" name="email" th:field="*{Email}" required="true" />
+                                        </div>
+                                        <div class="col-md-4 d-grid">
+                                            <button type="submit" class="btn btn-success">
+                                                <i class="fas fa-check"></i> guardar
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</section>
+
+
+
+
+
+
+    </body>
+    <style>
+        .listado-proveedores {
+            background-color: white;
+        }
+    </style>
+    
+</html>

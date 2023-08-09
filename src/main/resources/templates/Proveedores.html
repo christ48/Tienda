@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this template
+-->
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:sec="http://thymeleaf.org/extras/spring-security">
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                <head th:replace="~{layout/Header :: head}">
+                </head>
+                <body>
+                    
+                    <header th:replace="~{layout/Header :: header}"/>
+                    <section th:replace="~{layout/FragmentosProveedores :: botonesAgregar}"/>
+                    <section th:replace="~{layout/FragmentosProveedores :: agregarProveedor}"/>
+
+                    <section th:replace="~{layout/FragmentosProveedores :: listadoProveedores}"></section>
+                </body>
+                <style>
+                    body{
+                        text-align: center;
+                        font-family: 'Nuosu SIL', serif;
+                        font-family: 'Oswald', sans-serif;
+                        font-family: 'Roboto Condensed', sans-serif;
+                        background-image: url("/imagenes/bettaFond.jpg");
+                        background-size: cover;
+                        background-position: center;
+                    }
+
+                    .head{
+                        display: flex;
+                        align-items: center;
+                        justify-content: space-between;
+                        height: 70px;
+                        background-color: #011526;
+                        position: fixed;
+                        width: 100%;
+                        z-index: 100;
+                    }
+                </style>
+                </html>

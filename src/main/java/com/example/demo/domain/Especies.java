@@ -42,14 +42,18 @@ public class Especies implements Serializable {
     @Column(name="Familia")
     private String Familia;
     
+    @Column(name="id_proveedor")
+    private int id_proveedor;
+    
     public Especies(){}
     
-    public Especies(String Nombre,String Descripcion,String Habitat,String Tamano, String Familia){
+    public Especies(String Nombre,String Descripcion,String Habitat,String Tamano, String Familia,int id_proveedor){
         this.Nombre=Nombre;
         this.Descripcion=Descripcion;
         this.Habitat=Habitat;
         this.Tamano=Tamano;
         this.Familia=Familia;
+        this.id_proveedor=id_proveedor;
     
     
     }

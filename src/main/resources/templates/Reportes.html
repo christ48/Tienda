@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this template
+-->
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:sec="http://thymeleaf.org/extras/spring-security">
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                <head th:replace="~{layout/Header :: head}">
+                </head>
+                <body>
+                    <header th:replace="~{layout/Header :: header}"/>
+                    <section>
+                        <div class="container">
+                            <div class="row"></div>
+                            <div class="row row-cols-6" >
+                                <a th:href="@{/}" class="btn btn-primary">
+                                    <i class='fas fa-reply'></i> Volver</a>
+                            </div>
+                            <div class="row"></div>
+                            <div class="row row-cols-3">
+                                <div class="card">
+                                    <div class="card-header text-center">
+                                        Reporte Especies
+                                    </div>
+                                    <div class="card-body">
+                                        <a th:href="@{/ReporteEspecies?tipo=vPdf}" class="btn btn-primary">
+                                            <i class='fas fa-eye'></i><i class='fas fa-file-pdf'></i>
+                                        </a>
+                                        <a th:href="@{/ReporteEspecies?tipo=Pdf}" class="btn btn-success">
+                                            <i class='fas fa-download'></i><i class='fas fa-file-pdf'></i>
+                                        </a>
+                                        <a th:href="@{/ReporteEspecies?tipo=Xls}" class="btn btn-warning">
+                                            <i class='fas fa-download'></i><i class='fas fa-file-excel'></i>
+                                        </a>
+                                        <a th:href="@{/ReporteEspecies?tipo=Csv}" class="btn btn-danger">
+                                            <i class='fas fa-download'></i><i class='fas fa-file-csv'></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    <section>
+                        <div class="container">
+                            <div class="row"></div>
+                            <div class="row row-cols-6" >
+                                <a th:href="@{/}" class="btn btn-primary">
+                                    <i class='fas fa-reply'></i> Volver</a>
+                            </div>
+                            <div class="row"></div>
+                            <div class="row row-cols-3">
+                                <div class="card">
+                                    <div class="card-header text-center">
+                                        Reporte Proveedores
+                                    </div>
+                                    <div class="card-body">
+                                        <a th:href="@{/ReporteProveedores?tipo=vPdf}" class="btn btn-primary">
+                                            <i class='fas fa-eye'></i><i class='fas fa-file-pdf'></i>
+                                        </a>
+                                        <a th:href="@{/ReporteProveedores?tipo=Pdf}" class="btn btn-success">
+                                            <i class='fas fa-download'></i><i class='fas fa-file-pdf'></i>
+                                        </a>
+                                        <a th:href="@{/ReporteProveedores?tipo=Xls}" class="btn btn-warning">
+                                            <i class='fas fa-download'></i><i class='fas fa-file-excel'></i>
+                                        </a>
+                                        <a th:href="@{/ReporteProveedores?tipo=Csv}" class="btn btn-danger">
+                                            <i class='fas fa-download'></i><i class='fas fa-file-csv'></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+             <div class="card-body" style="padding: 15px; background-color: white;">
+    <form method="GET" th:action="@{/EspecieProveedor}" class="was-validated">
+
+        <div class="mb-3">
+            <label for="IdValor">Id del proveedor</label>
+            <input type="text" class="form-control" name="id_Proveedor" required="true" />
+        </div>
+
+        <div class="row">
+            <div class="col-md-3 d-grid">
+                <button name="tipo" value="vPdf" type="submit" class="btn btn-primary">
+                    <i class='fas fa-eye'></i><i class='fas fa-file-pdf'></i> Ver PDF
+                </button>
+            </div>
+            <div class="col-md-3 d-grid">
+                <button name="tipo" value="Pdf" type="submit" class="btn btn-success">
+                    <i class='fas fa-download'></i><i class='fas fa-file-pdf'></i> Descargar PDF
+                </button>
+            </div>
+            <div class="col-md-3 d-grid">
+                <button name="tipo" value="Xls" type="submit" class="btn btn-warning">
+                    <i class='fas fa-download'></i><i class='fas fa-file-excel'></i> Descargar Excel
+                </button>
+            </div>
+            <div class="col-md-3 d-grid">
+                <button name="tipo" value="Csv" type="submit" class="btn btn-danger">
+                    <i class='fas fa-download'></i><i class='fas fa-file-csv'></i> Descargar CSV
+                </button>
+            </div>
+        </div>
+    </form>
+</div>
+
+
+                </body>
+                <style>
+                    body{
+                        text-align: center;
+                        font-family: 'Nuosu SIL', serif;
+                        font-family: 'Oswald', sans-serif;
+                        font-family: 'Roboto Condensed', sans-serif;
+                        background-image: url("/imagenes/bettaFond.jpg");
+                        background-size: cover;
+                        background-position: center;
+                    }
+
+                    .head{
+                        display: flex;
+                        align-items: center;
+                        justify-content: space-between;
+                        height: 70px;
+                        background-color: #011526;
+                        position: fixed;
+                        width: 100%;
+                        z-index: 100;
+                    }
+                </style>
+                </html>

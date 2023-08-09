@@ -67,9 +67,6 @@
         <div class="col-md-2"></div>
         <div class="col-md-8">
             <form method="POST" th:action="@{/guardar}" th:object="${producto}" class="was-validated" enctype="multipart/form-data">
-
-
-              
                 <input type="hidden" name="idProducto" th:field="*{idProducto}" />
                 <section th:replace="~{layout/FragmentoProducto :: botonesEditar}" />
                 <div id="details">
@@ -123,7 +120,7 @@
                                     <th th:text="#{producto.nombre}"></th>
                                     <th th:text="#{producto.precio}"></th>
                                     <th th:text="#{producto.descripcion}"></th>
-                                    <th>Acciones</th> <!-- Nueva columna para acciones -->
+                                    <th>Acciones</th> 
                                 </tr>
                             </thead>
                             <tbody>
